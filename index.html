@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>رفيق | Rafiq — Male Reproductive Health Navigator</title>
-<meta name="description" content="رفيق: أداة سرية للتوعية والتوجيه في صحة الرجل الإنجابية. لا تشخّص، ولا تحفظ بياناتك.">
+<title>Rafiq — Male Reproductive Health Navigator</title>
+<meta name="description" content="Rafiq: a private awareness and navigation tool for male reproductive health. It doesn’t diagnose and doesn’t store your data.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,7 +226,7 @@ footer a{ color:var(--pine-2); text-decoration:none; font-weight:600; } footer a
 <body>
 <div class="pilot" id="pilot"></div>
 <div class="wrap">
-  <header class="top"><a class="logo" href="#" aria-label="Rafiq"><span class="ava s" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8.5 12h2l1-2 2 4 1-2h1"/></svg></span>رفيق<small>Rafiq</small></a><button id="langBtn" type="button">English</button></header>
+  <header class="top"><a class="logo" href="#" aria-label="Rafiq"><span class="ava s" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8.5 12h2l1-2 2 4 1-2h1"/></svg></span>Rafiq</a><button id="langBtn" type="button" aria-label="Arabic" title="Arabic">AR</button></header>
   <main id="main" tabindex="-1"></main>
   <footer id="foot"></footer>
 </div>
@@ -508,7 +508,8 @@ const T = {
     consent: "فهمت أن رفيق أداة توعية وتوجيه، وليس تشخيصًا طبيًا.",
     stats: "اختياري: أوافق على إرسال إحصائية مجهولة تساعد في تحسين رفيق. تُعدّ فقط ثلاثة أشياء: بدء التقييم، وإكماله، ومستوى الرعاية النهائي (P0 إلى P4). لا تُرسل أي إجابة ولا أي بيانات تعرّف بك.",
     start: "ابدأ التقييم", next: "التالي", back: "رجوع", pickAll: "اختر كل ما ينطبق", pickOne: "اختر إجابة واحدة",
-    of: "من", restart: "ابدأ تقييمًا جديدًا", lang: "English",
+    of: "من", restart: "ابدأ تقييمًا جديدًا", lang: "EN", langLabel: "English",
+    docTitle: "رفيق | Rafiq — Male Reproductive Health Navigator",
     emTitle: "توجّه إلى أقرب قسم طوارئ الآن",
     emCall: "إذا احتجت إسعافًا، اتصل برقم الطوارئ في بلدك:", emNums: [["السعودية", "997"], ["الإمارات", "998"]],
     emNote: "توقّف التقييم هنا عمدًا. صحتك الآن أهم من إكمال الأسئلة.",
@@ -545,7 +546,8 @@ const T = {
     consent: "I understand Rafiq is an awareness and navigation tool, not a medical diagnosis.",
     stats: "Optional: I agree to send anonymous statistics that help improve Rafiq. Only three things are counted: starting the assessment, completing it, and the final level of care (P0 to P4). No answers and no identifying data are sent.",
     start: "Start the assessment", next: "Next", back: "Back", pickAll: "Choose all that apply", pickOne: "Choose one answer",
-    of: "of", restart: "Start a new assessment", lang: "العربية",
+    of: "of", restart: "Start a new assessment", lang: "AR", langLabel: "Arabic",
+    docTitle: "Rafiq — Male Reproductive Health Navigator",
     emTitle: "Go to the nearest emergency department now",
     emCall: "If you need an ambulance, call your local emergency number:", emNums: [["Saudi Arabia", "997"], ["UAE", "998"]],
     emNote: "The assessment stopped here on purpose. Your health right now matters more than finishing the questions.",
@@ -575,7 +577,7 @@ const T = {
 };
 
 // ---------------- state & helpers ----------------
-const S = { lang: "ar", view: "home", step: 0, a: {}, consent: false, stats: false, sent: {}, id: "", anim: false, still: false };
+const S = { lang: "en", view: "home", step: 0, a: {}, consent: false, stats: false, sent: {}, id: "", anim: false, still: false };
 const t = k => T[S.lang][k];
 const L = o => o[S.lang];
 const $ = sel => document.querySelector(sel);
@@ -601,7 +603,7 @@ function track(name) {
 
 // ---------------- conversational copy (UI only, not used by the rules engine) ----------------
 Object.assign(T.ar, {
-  hello: "أهلًا بك، أنا رفيق سأسألك بعض الأسئلة القصيرة بهدوء وخصوصية تامة، وفي النهاية أعطيك ملخصًا واضحًا عن الخطوة المناسبة لك.",
+  hello: "أهلًا بك، أنا رفيق. سأسألك بعض الأسئلة القصيرة بهدوء وخصوصية تامة، وفي النهاية أعطيك ملخصًا واضحًا عن الخطوة المناسبة لك.",
   thinking: "رفيق يكتب…",
   intro1: "لنبدأ بأسئلة السلامة أولًا، فهي الأهم.",
   intro2: "ننتقل الآن إلى تاريخك الصحي ونمط حياتك.",
@@ -610,7 +612,7 @@ Object.assign(T.ar, {
   ackNoted: ["شكرًا لصراحتك، سأضع هذا في ملخصك.", "مفهوم، سأذكر هذا في الملخص حتى تناقشه مع طبيبك إن أحببت.", "شكرًا لمشاركتك، هذه معلومة مفيدة."],
   ackSkip: "لا بأس أبدًا، يمكنك تخطي ما لا ترغب بمشاركته.",
   ackUnknown: "لا مشكلة، كثيرون لا يعرفون ذلك.",
-  doneMsg: "انتهينا، شكرًا لوقتك هذا ملخص ما ظهر من إجاباتك، ويمكنك حفظه أو طباعته لمشاركته مع طبيبك إذا رغبت.",
+  doneMsg: "انتهينا، شكرًا لوقتك. هذا ملخص ما ظهر من إجاباتك، ويمكنك حفظه أو طباعته لمشاركته مع طبيبك إذا رغبت.",
   emKind: "أنا قلق عليك. ما وصفته يحتاج رعاية فورية، فلا تؤجّل.",
   urKind: "شكرًا لإخبارك. الأفضل أن يراك طبيب اليوم.",
   inKind: "شكرًا لاهتمامك بصحتك.",
@@ -618,7 +620,7 @@ Object.assign(T.ar, {
   icons: ["clock", "user", "lock"]
 });
 Object.assign(T.en, {
-  hello: "Hi, I’m Rafiq I’ll ask you a few short questions, calmly and fully privately, and at the end give you a clear summary of the right next step for you.",
+  hello: "Hi, I’m Rafiq. I’ll ask you a few short questions, calmly and fully privately, and at the end give you a clear summary of the right next step for you.",
   thinking: "Rafiq is typing…",
   intro1: "Let’s start with safety questions — they matter most.",
   intro2: "Now a few questions about your health and lifestyle.",
@@ -627,7 +629,7 @@ Object.assign(T.en, {
   ackNoted: ["Thanks for being open — I’ll include this in your summary.", "Understood. I’ll note it so you can discuss it with your doctor if you like.", "Thanks for sharing, that’s useful to know."],
   ackSkip: "That’s completely fine — you can skip anything you’d rather not share.",
   ackUnknown: "No problem, many people don’t know that.",
-  doneMsg: "All done, thank you for your time Here’s a summary of what your answers showed. You can save or print it to share with your doctor if you wish.",
+  doneMsg: "All done, thank you for your time. Here’s a summary of what your answers showed. You can save or print it to share with your doctor if you wish.",
   emKind: "I’m concerned about you. What you described needs immediate care — please don’t wait.",
   urKind: "Thanks for telling me. It’s best that a doctor sees you today.",
   inKind: "Thank you for caring about your health.",
@@ -678,7 +680,8 @@ function vQuestion() {
   const qs = visibleQs(); const q = qs[S.step]; const cur = S.a[q.id];
   const prev = S.step > 0 ? qs[S.step - 1] : null;
   const pct = Math.round((S.step / qs.length) * 100);
-  const other = S.lang === "ar" ? q.en : q.ar;
+  // Arabic mode keeps the English line under the question; English mode is English only.
+  const alt = S.lang === "ar" ? `<p class="qalt" lang="en" dir="ltr">${q.en}</p>` : "";
   const opts = q.o.map(o => {
     const sel = q.t === "multi" ? (cur || []).includes(o.v) : cur === o.v;
     return `<button type="button" class="opt ${sel ? "on" : ""} ${o.ex ? "ex" : ""}" data-v="${o.v}" role="${q.t === "multi" ? "checkbox" : "radio"}" aria-checked="${sel}">
@@ -701,7 +704,7 @@ function vQuestion() {
       <div class="row typingrow">${ava()}<div class="bubble typing" aria-label="${t("thinking")}"><i></i><i></i><i></i></div></div>
       <div class="row qrow fade">${ava()}<div class="bubble qb">
         <h1 class="qtext">${L(q)}</h1>
-        <p class="qalt" lang="${S.lang === "ar" ? "en" : "ar"}" dir="${S.lang === "ar" ? "ltr" : "rtl"}">${other}</p>
+        ${alt}
       </div></div>
       <div class="after fade d1">
         <p class="hint">${q.t === "multi" ? t("pickAll") : t("pickOne")}</p>
@@ -795,7 +798,9 @@ function render() {
   const view = route === "rules" ? "rules" : route === "tests" ? "tests" : S.view;
   const V = { home: vHome, q: vQuestion, emergency: vEmergency, urgent: vUrgent, ineligible: vIneligible, report: vReport, rules: vRules, tests: vTests }[view] || vHome;
   $("#pilot").textContent = t("pilot");
-  $("#langBtn").textContent = t("lang");
+  document.title = t("docTitle");
+  $(".logo").innerHTML = ava("s") + (S.lang === "ar" ? "رفيق<small>Rafiq</small>" : "Rafiq");
+  const lb = $("#langBtn"); lb.textContent = t("lang"); lb.setAttribute("aria-label", t("langLabel")); lb.title = t("langLabel");
   $("#main").innerHTML = V();
   $("#main").className = "v-" + view + (S.still ? " still" : "");
   S.still = false;
