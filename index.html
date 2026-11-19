@@ -255,8 +255,8 @@ const PATHWAYS = {
   NONE: { ar: "لا يوجد", en: "None" }
 };
 
-// Messages: Arabic = doctor's approved-draft wording (source: Clinical Rules Catalogue v1.0).
-// English = translation added for international reviewers (needs review).
+// Messages: Arabic = doctor's wording (source: Clinical Rules Catalogue v1.0, medically reviewed Nov 2026).
+// English = translation by the technical team, medically reviewed with the rules (Nov 2026).
 const RULES = {
   "CR-001": { q: "Q01", cat: { ar: "الأهلية", en: "Eligibility" }, path: "NONE",
     ar: "تم تصميم رفيق حاليًا للبالغين بعمر 18 سنة فأكثر. لا يمكننا إكمال هذا التقييم من خلال النسخة الحالية.",
@@ -309,7 +309,7 @@ const RULES = {
 };
 
 // Option-level priority mapping. "proposed" = chosen by the technical team where the
-// catalogue says "P2 or P3 depending on context" — needs medical confirmation.
+// catalogue says "P2 or P3 depending on context" — confirmed in the medical review (Nov 2026).
 const MAP = {
   Q07: { diabetes: "P2", hypertension: "P3", obesity: "P3", thyroid: "P2", hormonal: "P2", cancer: "P2", other_chronic: "P3" },
   Q13: { testicular_cancer: "P3", inherited: "P2" }
@@ -531,10 +531,9 @@ const T = {
     print: "حفظ أو طباعة الملخص", tech: "البيانات التقنية (JSON)", copy: "نسخ",
     footRules: "القواعد السريرية", footTests: "اختبارات التحقق", footHome: "الصفحة الرئيسية",
     footNote: "رفيق، نسخة القواعد 1.0. تمت المراجعة الطبية — د. محمد العيوي، نوفمبر 2026.",
-    rulesTitle: "كتالوج القواعد السريرية", rulesLead: "كل قاعدة ثابتة وقابلة للاختبار، ولا يتدخل الذكاء الاصطناعي في أي قرار. الحالة: بانتظار الاعتماد الطبي.",
-    proposedNote: "قرار مقترح من الفريق التقني لأن الكتالوج يترك الأولوية حسب السياق. يحتاج تأكيد الطبيب.",
+    rulesTitle: "كتالوج القواعد السريرية", rulesLead: "كل قاعدة ثابتة وقابلة للاختبار، ولا يتدخل الذكاء الاصطناعي في أي قرار. الحالة: تمت المراجعة الطبية — د. محمد العيوي، نوفمبر 2026.",
     testsTitle: "اختبارات التحقق السريرية", testsLead: "تُشغَّل هذه الاختبارات الآن داخل متصفحك على نفس محرك القواعد الذي يستخدمه التقييم.",
-    passed: "نجح", failed: "فشل", added: "سؤال متابعة مضاف، يحتاج اعتماد الطبيب"
+    passed: "نجح", failed: "فشل"
   },
   en: {
     pilot: "Prototype for Future Health 2026, medically reviewed. Not a diagnostic tool.",
@@ -569,10 +568,9 @@ const T = {
     print: "Save or print summary", tech: "Technical data (JSON)", copy: "Copy",
     footRules: "Clinical rules", footTests: "Validation tests", footHome: "Home",
     footNote: "Rafiq, rules version 1.0. Medically reviewed by Dr. Mohammed Al-Ayawi, November 2026.",
-    rulesTitle: "Clinical rules catalogue", rulesLead: "Every rule is fixed and testable; no AI takes part in any decision. Status: pending medical approval.",
-    proposedNote: "Proposed by the technical team where the catalogue leaves priority to context. Needs the doctor’s confirmation.",
+    rulesTitle: "Clinical rules catalogue", rulesLead: "Every rule is fixed and testable; no AI takes part in any decision. Status: medically reviewed by Dr. Mohammed Al-Ayawi, November 2026.",
     testsTitle: "Clinical validation tests", testsLead: "These tests run now in your browser, on the same rules engine the assessment uses.",
-    passed: "Pass", failed: "Fail", added: "Added follow-up question, needs medical approval"
+    passed: "Pass", failed: "Fail"
   }
 };
 
@@ -704,7 +702,6 @@ function vQuestion() {
       <div class="row qrow fade">${ava()}<div class="bubble qb">
         <h1 class="qtext">${L(q)}</h1>
         <p class="qalt" lang="${S.lang === "ar" ? "en" : "ar"}" dir="${S.lang === "ar" ? "ltr" : "rtl"}">${other}</p>
-        ${q.added ? `<p class="added">${t("added")}</p>` : ""}
       </div></div>
       <div class="after fade d1">
         <p class="hint">${q.t === "multi" ? t("pickAll") : t("pickOne")}</p>
@@ -779,10 +776,9 @@ function vReport() {
 }
 
 function vRules() {
-  const rows = Object.entries(RULES).map(([id, r]) => `<tr><td class="mono">${id}</td><td class="mono">${r.q}</td><td>${L(r.cat)}${PROPOSED.includes(id) ? ` <span class="prop" title="${t("proposedNote")}">*</span>` : ""}</td><td>${L(PATHWAYS[r.path])}</td><td>${L(r)}</td></tr>`).join("");
+  const rows = Object.entries(RULES).map(([id, r]) => `<tr><td class="mono">${id}</td><td class="mono">${r.q}</td><td>${L(r.cat)}</td><td>${L(PATHWAYS[r.path])}</td><td>${L(r)}</td></tr>`).join("");
   return `<section class="doc"><h1>${t("rulesTitle")}</h1><p class="lead">${t("rulesLead")}</p>
-    <div class="tw"><table><thead><tr><th>ID</th><th>Q</th><th>${S.lang === "ar" ? "الفئة" : "Category"}</th><th>${t("pathway")}</th><th>${S.lang === "ar" ? "الرسالة للمستخدم" : "User message"}</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="small"><span class="prop">*</span> ${t("proposedNote")}</p></section>`;
+    <div class="tw"><table><thead><tr><th>ID</th><th>Q</th><th>${S.lang === "ar" ? "الفئة" : "Category"}</th><th>${t("pathway")}</th><th>${S.lang === "ar" ? "الرسالة للمستخدم" : "User message"}</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
 }
 function vTests() {
   let pass = 0;

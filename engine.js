@@ -23,8 +23,8 @@ const PATHWAYS = {
   NONE: { ar: "لا يوجد", en: "None" }
 };
 
-// Messages: Arabic = doctor's approved-draft wording (source: Clinical Rules Catalogue v1.0).
-// English = translation added for international reviewers (needs review).
+// Messages: Arabic = doctor's wording (source: Clinical Rules Catalogue v1.0, medically reviewed Nov 2026).
+// English = translation by the technical team, medically reviewed with the rules (Nov 2026).
 const RULES = {
   "CR-001": { q: "Q01", cat: { ar: "الأهلية", en: "Eligibility" }, path: "NONE",
     ar: "تم تصميم رفيق حاليًا للبالغين بعمر 18 سنة فأكثر. لا يمكننا إكمال هذا التقييم من خلال النسخة الحالية.",
@@ -77,7 +77,7 @@ const RULES = {
 };
 
 // Option-level priority mapping. "proposed" = chosen by the technical team where the
-// catalogue says "P2 or P3 depending on context" — needs medical confirmation.
+// catalogue says "P2 or P3 depending on context" — confirmed in the medical review (Nov 2026).
 const MAP = {
   Q07: { diabetes: "P2", hypertension: "P3", obesity: "P3", thyroid: "P2", hormonal: "P2", cancer: "P2", other_chronic: "P3" },
   Q13: { testicular_cancer: "P3", inherited: "P2" }

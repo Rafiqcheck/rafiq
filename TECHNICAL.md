@@ -1,7 +1,7 @@
 # Rafiq | رفيق — Male Reproductive Health Navigator
 
 **Future Health Digital Innovation Challenge 2026 · Fertility · Challenge 01: Male Reproductive Health**
-Prototype — clinical rules v1.0, draft pending medical sign-off. Not a diagnostic tool.
+Prototype — clinical rules v1.0, medically reviewed by Dr. Mohammed Al-Ayawi (November 2026). Not a diagnostic tool.
 
 ## What it does
 Rafiq is a private, Arabic-first web app that gives men a low-friction front door to reproductive health. A short questionnaire (15–17 questions, ~5 minutes) is evaluated by a deterministic, clinician-authored rules engine that:
@@ -29,7 +29,7 @@ It never diagnoses, never calculates a fertility score, and never tells a user t
 - `run_tests.js` — runs the validation suite in Node: `node run_tests.js`.
 - **No AI/LLM in the decision path**, per catalogue section 9.1 (“The rule engine must not depend on an LLM to decide whether an emergency exists”) and 9.4 (“Clinical rules must not be modified by AI-generated content”).
 
-## Assumptions and decisions made by the technical team (need clinical confirmation)
+## Assumptions and decisions made by the technical team (confirmed in the medical review, November 2026)
 1. **CR-006 priority split:** diabetes, thyroid, hormonal/pituitary, cancer → P2; hypertension, obesity, other chronic → P3.
 2. **CR-012:** P3 by default; raised to P2 when current sexual/urinary symptoms (Q12) are also reported.
 3. **CR-014:** family history of testicular cancer → P3; known inherited reproductive/hormonal disorder → P2.
@@ -39,7 +39,7 @@ It never diagnoses, never calculates a fertility score, and never tells a user t
 7. Short interface texts not in the catalogue (P3 next step, limitations paragraph, stop-screen notes) and all English translations were written by the technical team.
 
 ## Limitations
-- Rules are a draft; no rule is approved for production until signed off by the medical lead (catalogue section 11).
+- Rules v1.0 were medically reviewed by Dr. Mohammed Al-Ayawi (November 2026); Rafiq remains a challenge prototype, not a clinical service.
 - Validated only against the 28 defined test cases; not yet tested with real users or real clinical data.
 - Self-reported answers; the tool cannot examine, test or verify.
 - Only opt-in aggregate counts of starts, completions and care levels are measured; referral completion and user trust are not measured yet and need a consented clinical pilot. Opt-in counts undercount real use.
