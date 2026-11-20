@@ -1,7 +1,7 @@
 # Rafiq | رفيق — Male Reproductive Health Navigator
 
 **Future Health Digital Innovation Challenge 2026 · Fertility · Challenge 01: Male Reproductive Health**
-Prototype — clinical rules v1.0, medically reviewed by Dr. Mohammed Al-Ayawi (November 2026). Not a diagnostic tool.
+Prototype — clinical rules v1.0, medically reviewed (November 2026). Not a diagnostic tool.
 
 ## What it does
 Rafiq is a private, Arabic-first web app that gives men a low-friction front door to reproductive health. A short questionnaire (15–17 questions, ~5 minutes) is evaluated by a deterministic, clinician-authored rules engine that:
@@ -35,11 +35,11 @@ It never diagnoses, never calculates a fertility score, and never tells a user t
 3. **CR-014:** family history of testicular cancer → P3; known inherited reproductive/hormonal disorder → P2.
 4. **CR-015:** added follow-up question **Q14-A** (duration of attempts), which the catalogue references but the questionnaire did not include. <6 months → P3; 6–12 months or unknown → P2 (clinical advice); >12 months → P2 (evaluate both partners).
 5. **CR-016:** added follow-up **Q15-A** (“did a doctor say your semen analysis was abnormal?”) so the “abnormal semen analysis” trigger can fire; abnormal → P2, otherwise P3.
-6. **Emergency numbers** shown: Saudi Arabia 997, UAE 998.
+6. **Emergency guidance is country-neutral:** the emergency and same-day screens tell users to call their local emergency number. No country-specific numbers are built in, so Rafiq works for users anywhere.
 7. Short interface texts not in the catalogue (P3 next step, limitations paragraph, stop-screen notes) and all English translations were written by the technical team.
 
 ## Limitations
-- Rules v1.0 were medically reviewed by Dr. Mohammed Al-Ayawi (November 2026); Rafiq remains a challenge prototype, not a clinical service.
+- Rules v1.0 were medically reviewed (November 2026); Rafiq remains a challenge prototype, not a clinical service.
 - Validated only against the 28 defined test cases; not yet tested with real users or real clinical data.
 - Self-reported answers; the tool cannot examine, test or verify.
 - Only opt-in aggregate counts of starts, completions and care levels are measured; referral completion and user trust are not measured yet and need a consented clinical pilot. Opt-in counts undercount real use.

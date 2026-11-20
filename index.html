@@ -511,7 +511,7 @@ const T = {
     of: "من", restart: "ابدأ تقييمًا جديدًا", lang: "EN", langLabel: "English",
     docTitle: "رفيق | Rafiq — Male Reproductive Health Navigator",
     emTitle: "توجّه إلى أقرب قسم طوارئ الآن",
-    emCall: "إذا احتجت إسعافًا، اتصل برقم الطوارئ في بلدك:", emNums: [["السعودية", "997"], ["الإمارات", "998"]],
+    emCall: "إذا احتجت إسعافًا، اتصل برقم الطوارئ في بلدك.",
     emNote: "توقّف التقييم هنا عمدًا. صحتك الآن أهم من إكمال الأسئلة.",
     urTitle: "تحتاج إلى تقييم طبي حضوري اليوم",
     urNote: "توقّف التقييم هنا لأن الفحص الحضوري هو الخطوة الصحيحة الآن.",
@@ -549,7 +549,7 @@ const T = {
     of: "of", restart: "Start a new assessment", lang: "AR", langLabel: "Arabic",
     docTitle: "Rafiq — Male Reproductive Health Navigator",
     emTitle: "Go to the nearest emergency department now",
-    emCall: "If you need an ambulance, call your local emergency number:", emNums: [["Saudi Arabia", "997"], ["UAE", "998"]],
+    emCall: "If you need an ambulance, call your local emergency number.",
     emNote: "The assessment stopped here on purpose. Your health right now matters more than finishing the questions.",
     urTitle: "You need an in-person medical assessment today",
     urNote: "The assessment stopped here because an in-person exam is the right next step.",
@@ -724,7 +724,7 @@ function vEmergency() {
   return `${kind("emKind")}<section class="stop em fade d1" role="alert">
     <h1>${t("emTitle")}</h1>
     ${p0.map(s => `<p class="stopmsg">${L(RULES[s.rule_id])}</p>`).join("")}
-    <div class="call"><p>${t("emCall")}</p><div class="nums">${t("emNums").map(([c, n]) => `<a href="tel:${n}" class="num"><span>${c}</span><b>${n}</b></a>`).join("")}</div></div>
+    <div class="call"><p>${t("emCall")}</p></div>
     <p class="stopnote">${t("emNote")}</p>
     <button class="btn ghost" id="restartBtn">${t("restart")}</button>
   </section>`;
@@ -732,7 +732,7 @@ function vEmergency() {
 function vUrgent() {
   return `${kind("urKind")}<section class="stop ur fade d1" role="alert">
     <h1>${t("urTitle")}</h1><p class="stopmsg">${L(RULES["CR-004"])}</p>
-    <div class="call"><p>${t("emCall")}</p><div class="nums">${t("emNums").map(([c, n]) => `<a href="tel:${n}" class="num"><span>${c}</span><b>${n}</b></a>`).join("")}</div></div>
+    <div class="call"><p>${t("emCall")}</p></div>
     <p class="stopnote">${t("urNote")}</p><button class="btn ghost" id="restartBtn">${t("restart")}</button>
   </section>`;
 }
